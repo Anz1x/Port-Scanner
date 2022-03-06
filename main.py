@@ -2,10 +2,8 @@
 # Made by Anz
 # Github: https://github.com/Anz1x
 
-from email.utils import localtime
 import socket
 import time
-from time import strftime
 import logging
 from IPy import IP
 
