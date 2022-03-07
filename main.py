@@ -79,4 +79,4 @@ else:
     scan(targets)
 
 print("_________________________________________________________________________")
-logging.info("\n[-] Scan Completed for %s at" % (targets))
+logging.info("\n[-] Scan completed for %s at" % (targets))
