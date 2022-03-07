@@ -77,3 +77,6 @@ if "," in targets:
         scan(ip_addr.strip(""))
 else:
     scan(targets)
+
+print("_________________________________________________________________________")
+logging.info("\n[-] Scan Completed for %s at" % (targets))
