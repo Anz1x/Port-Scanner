@@ -42,7 +42,7 @@ logging.basicConfig(level=logging.INFO, format="%(message)s %(asctime)s",
 def scan(target):
     converted_ip = check_ip(target)
 
-    print("_________________________________________________________________________")
+    print(Fore.RESET + "_________________________________________________________________________")
     logging.info(Fore.RED + "\n" + "[-] Starting the scan on " + str(target) + " at")
     for port in range(4, 100):
         port_scan(converted_ip, port)
