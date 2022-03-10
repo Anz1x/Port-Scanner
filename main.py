@@ -5,11 +5,14 @@
 import socket
 import time
 from threading import Lock, Thread
-import os
 import logging
 from IPy import IP
+import colorama
+from colorama import Fore
 
-print("""
+colorama.init(autoreset=True)
+
+print(Fore.GREEN + """
 ░█████╗░███╗░░██╗███████╗██╗░██████╗  ██████╗░░█████╗░██████╗░████████╗
 ██╔══██╗████╗░██║╚════██║╚█║██╔════╝  ██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝
 ███████║██╔██╗██║░░███╔═╝░╚╝╚█████╗░  ██████╔╝██║░░██║██████╔╝░░░██║░░░
@@ -27,6 +30,8 @@ print("""
 Port Scanner made by Anz
 Github: https://github.com/Anz1x
 When scanning multiple targets make sure to split the targets with a ','
+""" + Fore.RESET +
+"""
 _________________________________________________________________________
 """)
 time.sleep(0.75)
@@ -36,27 +41,9 @@ logging.basicConfig(level=logging.INFO, format="%(message)s %(asctime)s",
 
 def scan(target):
     converted_ip = check_ip(target)
-    try:
-        os.system("cls")
-    except:
-        pass
-    try:
-        os.system("clear")
-    except:
-        pass
-    print("""
-   _____                        _                __  __            __                        __ 
-  / ___/_________ _____  ____  (_)___  ____ _   / /_/ /_  ___     / /_____ __________ ____  / /_
-  \__ \/ ___/ __ `/ __ \/ __ \/ / __ \/ __ `/  / __/ __ \/ _ \   / __/ __ `/ ___/ __ `/ _ \/ __/
- ___/ / /__/ /_/ / / / / / / / / / / / /_/ /  / /_/ / / /  __/  / /_/ /_/ / /  / /_/ /  __/ /_  
-/____/\___/\__,_/_/ /_/_/ /_/_/_/ /_/\__, /   \__/_/ /_/\___/   \__/\__,_/_/   \__, /\___/\__/  
-                                    /____/                                    /____/              
-  
-Port Scanner made by Anz
-Github: https://github.com/Anz1x
-_________________________________________________________________________
-    """)
-    logging.info("\n" + "[-] Starting the scan on " + str(target) + " at")
+
+    print("_________________________________________________________________________")
+    logging.info(Fore.RED + "\n" + "[-] Starting the scan on " + str(target) + " at")
     for port in range(4, 100):
         port_scan(converted_ip, port)
 
@@ -77,13 +64,13 @@ def port_scan(ip_address, port):
         s.connect((ip_address, port))
         try:
             banner = get_banner(s)
-            print("\n[+] Open Port: %s | Banner Results: %s" % (port, banner.decode().strip("\n")))
+            print(Fore.RED + "\n[+] Open Port: %s | Banner Results: %s" % (port, banner.decode().strip("\n")))
         except:
-            print("\n[+] Open Port: %s" % (port))
+            print(Fore.RED + "\n[+] Open Port: %s" % (port))
     except:
         pass
 
-targets = str(input("[+] Target(s): "))
+targets = str(input(Fore.RED + "[+] Target(s): "))
 if "," in targets:
     for ip_addr in targets.split(","):
         scan(ip_addr.strip(""))
@@ -91,4 +78,4 @@ else:
     scan(targets)
 
 print("_________________________________________________________________________")
-logging.info("\n[-] Scan Completed for %s at" % (targets))
+logging.info(Fore.RED + "\n[-] Scan Completed for %s at" % (targets))
