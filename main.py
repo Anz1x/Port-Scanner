@@ -55,6 +55,7 @@ def scan(target):
                                        |___/                                 |___/          
 Port Scanner developed by Anz
 Github: https://github.com/Anz1x
+Github: https://github.com/Anz1x
 _________________________________________________________________________
     """)
     logging.info("\n" + "[-] Starting the scan on " + str(target) + " at")
