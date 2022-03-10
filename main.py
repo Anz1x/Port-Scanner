@@ -3,12 +3,12 @@
 # Github: https://github.com/Anz1x
 
 import socket
-import time
 from threading import Lock, Thread
 import logging
 from IPy import IP
 import colorama
 from colorama import Fore
+import time
 
 colorama.init(autoreset=True)
 
@@ -64,9 +64,9 @@ def port_scan(ip_address, port):
         s.connect((ip_address, port))
         try:
             banner = get_banner(s)
-            print(Fore.RED + "\n[+] Open Port: %s | Banner Results: %s" % (port, banner.decode().strip("\n")))
+            print(Fore.GREEN + "\n[+] Open Port: %s | Banner Results: %s" % (port, banner.decode().strip("\n")))
         except:
-            print(Fore.RED + "\n[+] Open Port: %s" % (port))
+            print(Fore.GREEN + "\n[+] Open Port: %s" % (port))
     except:
         pass
 
@@ -78,4 +78,4 @@ else:
     scan(targets)
 
 print("_________________________________________________________________________")
-logging.info(Fore.RED + "\n[-] Scan Completed for %s at" % (targets))
+logging.info(Fore.RED + "\n[-] Scan completed for %s at" % (targets))
