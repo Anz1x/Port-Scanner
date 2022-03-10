@@ -1,17 +1,11 @@
-#      ██████╗░░█████╗░██████╗░████████╗  ░██████╗░█████╗░░█████╗░███╗░░██╗███╗░░██╗███████╗██████╗░
-#      ██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝  ██╔════╝██╔══██╗██╔══██╗████╗░██║████╗░██║██╔════╝██╔══██╗
-#      ██████╔╝██║░░██║██████╔╝░░░██║░░░  ╚█████╗░██║░░╚═╝███████║██╔██╗██║██╔██╗██║█████╗░░██████╔╝
-#      ██╔═══╝░██║░░██║██╔══██╗░░░██║░░░  ░╚═══██╗██║░░██╗██╔══██║██║╚████║██║╚████║██╔══╝░░██╔══██╗
-#      ██║░░░░░╚█████╔╝██║░░██║░░░██║░░░  ██████╔╝╚█████╔╝██║░░██║██║░╚███║██║░╚███║███████╗██║░░██║
-#      ╚═╝░░░░░░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░  ╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝
-
-
 # A port scanner developed with Python 3.10.2. 
 # Made by Anz
 # Github: https://github.com/Anz1x
 
 import socket
 import time
+from threading import Lock, Thread
+import os
 import logging
 from IPy import IP
 
@@ -44,8 +38,26 @@ logging.basicConfig(level=logging.INFO, format="%(message)s %(asctime)s",
 
 def scan(target):
     converted_ip = check_ip(target)
+    try:
+        os.system("cls")
+    except:
+        os.system("clear")
+    print("""
+   _____                       _               _   _            _                       _   
+  / ____|                     (_)             | | | |          | |                     | |  
+ | (___   ___ __ _ _ __  _ __  _ _ __   __ _  | |_| |__   ___  | |_ __ _ _ __ __ _  ___| |_ 
+  \___ \ / __/ _` | '_ \| '_ \| | '_ \ / _` | | __| '_ \ / _ \ | __/ _` | '__/ _` |/ _ \ __|
+  ____) | (_| (_| | | | | | | | | | | | (_| | | |_| | | |  __/ | || (_| | | | (_| |  __/ |_ 
+ |_____/ \___\__,_|_| |_|_| |_|_|_| |_|\__, |  \__|_| |_|\___|  \__\__,_|_|  \__, |\___|\__|
+                                        __/ |                                 __/ |         
+                                       |___/                                 |___/          
+
+Port Scanner developed by Anz
+Github: https://github.com/Anz1x
+_________________________________________________________________________
+    """)
     logging.info("\n" + "[-] Starting the scan on " + str(target) + " at")
-    for port in range(1, 100):
+    for port in range(4, 100):
         port_scan(converted_ip, port)
 
 def check_ip(ip):
@@ -79,4 +91,4 @@ else:
     scan(targets)
 
 print("_________________________________________________________________________")
-logging.info("\n[-] Scan completed for %s at" % (targets))
+logging.info("\n[-] Scan Completed for %s at" % (targets))
