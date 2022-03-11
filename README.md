@@ -16,7 +16,4 @@ Installation:
 
   pip3 install IPy
   pip3 install Colorama
-  
-  Example:
-  ![image](https://user-images.githubusercontent.com/50573902/157814083-51011496-ade6-4a43-baea-c8491a4fc42e.png)
-
+ 
