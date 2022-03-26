@@ -17,9 +17,9 @@ os.system("cls; clear")
 
 print(Fore.GREEN + """
 
-▒█▀▀█ █▀▀█ █▀▀█ ▀▀█▀▀ 　 ▒█▀▀▀█ █▀▀ █▀▀█ █▀▀▄ █▀▀▄ █▀▀ █▀▀█ 
-▒█▄▄█ █░░█ █▄▄▀ ░░█░░ 　 ░▀▀▀▄▄ █░░ █▄▄█ █░░█ █░░█ █▀▀ █▄▄▀ 
-▒█░░░ ▀▀▀▀ ▀░▀▀ ░░▀░░ 　 ▒█▄▄▄█ ▀▀▀ ▀░░▀ ▀░░▀ ▀░░▀ ▀▀▀ ▀░▀▀
+ ▒█▀▀█ █▀▀█ █▀▀█ ▀▀█▀▀ 　 ▒█▀▀▀█ █▀▀ █▀▀█ █▀▀▄ █▀▀▄ █▀▀ █▀▀█ 
+ ▒█▄▄█ █░░█ █▄▄▀ ░░█░░ 　 ░▀▀▀▄▄ █░░ █▄▄█ █░░█ █░░█ █▀▀ █▄▄▀ 
+ ▒█░░░ ▀▀▀▀ ▀░▀▀ ░░▀░░ 　 ▒█▄▄▄█ ▀▀▀ ▀░░▀ ▀░░▀ ▀░░▀ ▀▀▀ ▀░▀▀
 
 [>] Port Scanner made by Anz
 [>] Github: https://github.com/Anz1x
@@ -64,7 +64,7 @@ def port_scan(ip_address, port):
     except:
         pass
 
-targets = str(input(Fore.RED + "[+] Target(s): "))
+targets = str(input(Fore.RED + "[+] Target(s): " + Fore.YELLOW))
 if "," in targets:
     for ip_addr in targets.split(","):
         scan(ip_addr.strip(""))
